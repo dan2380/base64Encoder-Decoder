@@ -1,0 +1,37 @@
+<html>
+ 
+ <body>
+    
+
+<header>
+    <h1>Base64 Encoder/Decoder</h1>
+  </header>
+
+<form>
+  <div><strong>Data:</strong> <textarea id="txt_data"></textarea></div>
+  <input type="button" id="btn_encode" value="Encode">
+  <input type="button" id="btn_decode" value="Decode">
+  <input type="button" id="btn_copy" value="Copy Result to Data">
+  <p></p>
+  <div><strong>Result:</strong> <textarea id="txt_result"></textarea></div>
+</form>
+  </body>
+<script language='javascript'>
+  document.getElementById('btn_decode').onclick = function() {
+    document.getElementById('txt_result').value = '';
+    var strDataToDecode = document.getElementById('txt_data').value;
+    var strDecodedData = escape(atob(strDataToDecode));
+    document.getElementById('txt_result').value = strDecodedData;
+  }
+  document.getElementById('btn_encode').onclick = function() {
+    document.getElementById('txt_result').value = '';
+    var strDataToEncode = document.getElementById('txt_data').value;
+    var strEncodedData = btoa(unescape(strDataToEncode));
+    document.getElementById('txt_result').value = strEncodedData;
+  }
+  document.getElementById('btn_copy').onclick = function() {
+    document.getElementById('txt_data').value = document.getElementById('txt_result').value;
+    document.getElementById('txt_result').value = '';
+  }
+</script>
+</html>
